@@ -8,6 +8,7 @@ RUN     yum install -y npm
 # Bundle app source
 COPY ./ /service
 # Install app dependencies
+RUN npm install inherits@2.0.0 -g
 RUN npm install coffee-script -g
 RUN npm install supervisor -g
 
