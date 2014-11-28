@@ -4,6 +4,8 @@ echo Cleaning...
 rm -rf ./dist
 
 echo Building app
+bower install
+npm install
 grunt
 
 cp ./Dockerfile ./dist/
