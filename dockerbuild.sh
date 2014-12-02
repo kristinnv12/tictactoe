@@ -15,5 +15,6 @@ echo grunt install
 npm install grunt
 
 echo grunt run
+grunt
 
 echo "Done"
