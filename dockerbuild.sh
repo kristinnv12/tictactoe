@@ -4,16 +4,16 @@ echo Cleaning...
 rm -rf ./dist
 
 echo Building app
+
+echo bower install
 bower install
+
+echo Npm install
 npm install
-grunt
 
-cp ./Dockerfile ./dist/
+echo grunt install
+npm install grunt
 
-cd dist
-npm install --production
-
-echo Building docker image
-docker build -t kristinnv12/tictactoe .
+echo grunt run
 
 echo "Done"
