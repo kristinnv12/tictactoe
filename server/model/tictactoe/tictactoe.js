@@ -30,6 +30,17 @@ module.exports = function(history){
 						name: command.name,
 						timeStamp: command.timeStamp
 					}];
+				},
+				"MakeMove": function(command){
+					if(!gameState.gameExcists)
+					{
+						return[{
+							event:"GameDoesntExcist",
+							user: command.user,
+							name: command.name,
+							timeStamp: command.timeStamp
+						}];	
+					}
 				}
 			}
 			return commandHandlers[command.command](command);
