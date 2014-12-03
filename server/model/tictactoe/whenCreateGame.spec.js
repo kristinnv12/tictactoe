@@ -1,0 +1,35 @@
+'use strict';
+var should = require('should');
+var _ = require('lodash');
+
+var tictactoe = require('./tictactoe');
+
+describe('create game command', function(){
+
+	it('should emit a joingame event', function(){
+		
+		var givenObject = [];
+
+		var when = {
+			command: "CreateGame",
+			user:{
+				userName:"Kiddi"
+			},
+			name:"MyGame",
+			timeStamp: "2014-12-02-T18:23:55"
+		};
+
+		var then = [{
+			event:"GameCreate",
+			user:{
+				userName: "Kiddi"
+			},
+			name: "MyGame",
+			timeStamp: "2014-12-02-T18:23:55"
+		}];
+
+		returnedEvent = tictactoe(givenObject).excecuteCommand(when);
+		should(returnedEvent.length).be.exactly(1);
+		should(JSON.stringify(actualEvents)).be.exactly(JSON.stringify(then));
+	})
+});
