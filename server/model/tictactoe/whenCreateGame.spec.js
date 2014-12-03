@@ -20,7 +20,7 @@ describe('create game command', function(){
 		};
 
 		var then = [{
-			event:"GameCreate",
+			event:"GameCreated",
 			user:{
 				userName: "Kiddi"
 			},
@@ -28,7 +28,7 @@ describe('create game command', function(){
 			timeStamp: "2014-12-02-T18:23:55"
 		}];
 
-		var returnedEvents = tictactoe(givenObject).excecuteCommand(when);
+		var returnedEvents = tictactoe(givenObject).executeCommand(when);
 		should(returnedEvents.length).be.exactly(1);
 		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
 	})
