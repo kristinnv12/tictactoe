@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo killing docker
 docker kill $(docker ps -q)
 
