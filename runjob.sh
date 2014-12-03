@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -e
+
 uname -a
 echo killing docker
 docker kill tictactoe
