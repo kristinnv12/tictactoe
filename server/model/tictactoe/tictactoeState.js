@@ -10,11 +10,10 @@ module.exports = function(events){
 	});
 
 	return {
+		
 		gameFull: function(){
 			return gameFull;
-		}
-	}
-	return {
+		},
 		gameExcists: function(){
 			return gameExcists;
 		}

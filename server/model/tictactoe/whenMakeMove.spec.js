@@ -31,4 +31,37 @@ describe('making a move', function(){
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
 		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
 	})
+
+	it('should emit a GameNotFull event', function(){
+		
+		var givenObject = [{
+			event:"GameCreated",
+			user:{
+				userName: "Kiddi"
+			},
+			name: "MyGame",
+			timeStamp: "2014-12-02-T18:23:55"
+		}];
+
+		var when = {
+			command: "MakeMove",
+			user:{
+				userName:"Kiddi"
+			},
+			name:"MyGame",
+			timeStamp: "2014-12-02-T18:23:55"
+		};
+
+		var then = [{
+			event:"GameNotFull",
+			user:{
+				userName: "Kiddi"
+			},
+			name: "MyGame",
+			timeStamp: "2014-12-02-T18:23:55"
+		}];
+
+		var returnedEvents = tictactoe(givenObject).executeCommand(when);
+		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+	})
 });

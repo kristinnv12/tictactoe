@@ -23,7 +23,7 @@ module.exports = function(history){
 							timeStamp: command.timeStamp
 						}];						
 					}
-					gameState.GameFull = true;
+					gameState.gameFull = true;
 					return[{
 						event:"GameJoined",
 						user: command.user,
@@ -32,10 +32,20 @@ module.exports = function(history){
 					}];
 				},
 				"MakeMove": function(command){
-					if(!gameState.gameExcists)
+					//console.log(gameState.gameExcists());
+					if(!gameState.gameExcists())
 					{
 						return[{
 							event:"GameDoesntExcist",
+							user: command.user,
+							name: command.name,
+							timeStamp: command.timeStamp
+						}];	
+					}
+					if(!gameState.gameFull())
+					{
+						return[{
+							event:"GameNotFull",
 							user: command.user,
 							name: command.name,
 							timeStamp: command.timeStamp
