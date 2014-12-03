@@ -28,8 +28,8 @@ describe('create game command', function(){
 			timeStamp: "2014-12-02-T18:23:55"
 		}];
 
-		returnedEvent = tictactoe(givenObject).excecuteCommand(when);
-		should(returnedEvent.length).be.exactly(1);
-		should(JSON.stringify(actualEvents)).be.exactly(JSON.stringify(then));
+		var returnedEvents = tictactoe(givenObject).excecuteCommand(when);
+		should(returnedEvents.length).be.exactly(1);
+		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
 	})
 });
