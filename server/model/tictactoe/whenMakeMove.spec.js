@@ -16,7 +16,8 @@ describe('-------- Making a move --------', function(){
 				userName:"Kiddi"
 			},
 			name:"MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
 		};
 
 		var then = [{
@@ -49,7 +50,8 @@ describe('-------- Making a move --------', function(){
 				userName:"Kiddi"
 			},
 			name:"MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
 		};
 
 		var then = [{
@@ -90,7 +92,8 @@ describe('-------- Making a move --------', function(){
 				userName:"Ragnar"
 			},
 			name:"MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates:[0,0]
 		};
 
 		var then = [{
@@ -130,7 +133,8 @@ describe('-------- Making a move --------', function(){
 				userName:"Kiddi"
 			},
 			name:"MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
 		}];
 
 		var when = {
@@ -139,7 +143,8 @@ describe('-------- Making a move --------', function(){
 				userName:"Kiddi"
 			},
 			name:"MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
 		};
 
 		var then = [{
@@ -180,7 +185,8 @@ describe('-------- Making a move --------', function(){
 				userName:"Kiddi"
 			},
 			name:"MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
 		};
 
 		var then = [{
@@ -189,7 +195,8 @@ describe('-------- Making a move --------', function(){
 				userName: "Kiddi"
 			},
 			name: "MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
@@ -220,7 +227,69 @@ describe('-------- Making a move --------', function(){
 				userName:"Kiddi"
 			},
 			name:"MyGame",
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
+		},
+		{
+			event: "MoveMade",
+			user:{
+				userName:"Ragnar"
+			},
+			name:"MyGame",
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,1]
+		}];
+
+		var when = {
+			command: "MakeMove",
+			user:{
+				userName:"Kiddi"
+			},
+			name:"MyGame",
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,2]
+		};
+
+		var then = [{
+			event:"MoveMade",
+			user:{
+				userName: "Kiddi"
+			},
+			name: "MyGame",
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,2]
+		}];
+
+		var returnedEvents = tictactoe(givenObject).executeCommand(when);
+		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+	})
+
+	it('should emit a SquareOccupied event', function(){
+		
+		var givenObject = [{
+			event:"GameCreated",
+			user:{
+				userName: "Kiddi"
+			},
+			name: "MyGame",
 			timeStamp: "2014-12-02-T18:23:55"
+		},
+		{
+			event:"GameJoined",
+			user:{
+				userName: "Ragnar"
+			},
+			name: "MyGame",
+			timeStamp: "2014-12-02-T18:23:55"
+		},
+		{
+			event: "MoveMade",
+			user:{
+				userName:"Kiddi"
+			},
+			name:"MyGame",
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
 		}];
 
 		var when = {
@@ -229,16 +298,18 @@ describe('-------- Making a move --------', function(){
 				userName:"Ragnar"
 			},
 			name:"MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
 		};
 
 		var then = [{
-			event:"MoveMade",
+			event:"SquareOccupied",
 			user:{
 				userName: "Ragnar"
 			},
 			name: "MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0]
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);

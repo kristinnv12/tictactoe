@@ -54,12 +54,27 @@ module.exports = function(history){
 					}
 					if((JSON.stringify(gameState.playerMove())) === (JSON.stringify(command.user)))
 					{
-						return[{
-							event:"MoveMade",
-							user: command.user,
-							name: command.name,
-							timeStamp: command.timeStamp
-						}];	
+						if(gameState.free(command.coordinates))
+						{
+							gameState.makeMove(command.coordinates);
+							return[{
+								event:"MoveMade",
+								user: command.user,
+								name: command.name,
+								timeStamp: command.timeStamp,
+								coordinates: command.coordinates
+							}];
+						}
+						else
+						{
+							return[{
+								event:"SquareOccupied",
+								user: command.user,
+								name: command.name,
+								timeStamp: command.timeStamp,
+								coordinates: command.coordinates
+							}];
+						}
 					}
 					else
 					{
