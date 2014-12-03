@@ -13,6 +13,6 @@ docker build -t kristinnv12/tictactoe .
 echo pushing to docker
 docker push kristinnv12/tictactoe
 
-ssh root@95.85.17.171 'bash -s' < runjob.sh
+ssh root@95.85.17.171 'bash -s' < ./runjob.sh
 
 
