@@ -6,6 +6,7 @@ module.exports = function(history){
 		executeCommand: function(command){
 			var commandHandlers = {
 				"CreateGame": function(command){
+
 					return[{
 						event:"GameCreated",
 						user: command.user,
@@ -14,6 +15,7 @@ module.exports = function(history){
 					}];
 				},
 				"JoinGame": function(command){
+					//console.log("----->" + gameState.gameFull());
 					if(gameState.gameFull())
 					{
 						return[{
@@ -32,7 +34,6 @@ module.exports = function(history){
 					}];
 				},
 				"MakeMove": function(command){
-					//console.log(gameState.gameExcists());
 					if(!gameState.gameExcists())
 					{
 						return[{
@@ -46,6 +47,24 @@ module.exports = function(history){
 					{
 						return[{
 							event:"GameNotFull",
+							user: command.user,
+							name: command.name,
+							timeStamp: command.timeStamp
+						}];	
+					}
+					if((JSON.stringify(gameState.playerMove())) === (JSON.stringify(command.user)))
+					{
+						return[{
+							event:"MoveMade",
+							user: command.user,
+							name: command.name,
+							timeStamp: command.timeStamp
+						}];	
+					}
+					else
+					{
+						return[{
+							event:"NotYourMove",
 							user: command.user,
 							name: command.name,
 							timeStamp: command.timeStamp
