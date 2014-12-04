@@ -30,6 +30,6 @@ describe('-------- Creating a game command --------', function(){
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
 		should(returnedEvents.length).be.exactly(1);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 });

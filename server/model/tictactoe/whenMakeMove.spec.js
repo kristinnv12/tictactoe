@@ -30,7 +30,7 @@ describe('-------- Making a move --------', function(){
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 
 	it('should emit a GameNotFull event', function(){
@@ -64,7 +64,7 @@ describe('-------- Making a move --------', function(){
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 
 	it('should emit a NotYourMove event', function(){
@@ -106,7 +106,7 @@ describe('-------- Making a move --------', function(){
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 
 	it('should emit a NotYourMove event', function(){
@@ -157,7 +157,7 @@ describe('-------- Making a move --------', function(){
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 
 	it('should emit a MoveMade event', function(){
@@ -200,7 +200,7 @@ describe('-------- Making a move --------', function(){
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 
 	it('should emit a MoveMade event', function(){
@@ -261,7 +261,7 @@ describe('-------- Making a move --------', function(){
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 
 	it('should emit a SquareOccupied event', function(){
@@ -313,6 +313,6 @@ describe('-------- Making a move --------', function(){
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 });

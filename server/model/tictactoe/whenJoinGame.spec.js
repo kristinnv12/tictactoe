@@ -35,7 +35,7 @@ describe('-------- Joining a game command --------', function(){
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	});
 
 	it('should emit a gameFull event', function(){
@@ -75,6 +75,6 @@ describe('-------- Joining a game command --------', function(){
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	});
 });

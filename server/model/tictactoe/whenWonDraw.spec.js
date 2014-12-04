@@ -82,7 +82,7 @@ describe('-------- Wining/Drawing a game --------', function(){
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
 		should(returnedEvents.length).be.exactly(1);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 
 	it('should emit a GameWon event', function(){
@@ -161,7 +161,7 @@ describe('-------- Wining/Drawing a game --------', function(){
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
 		should(returnedEvents.length).be.exactly(1);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 
 	it('should emit a GameDraw event', function(){
@@ -276,6 +276,6 @@ describe('-------- Wining/Drawing a game --------', function(){
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
 		should(returnedEvents.length).be.exactly(1);
-		should(JSON.stringify(returnedEvents)).be.exactly(JSON.stringify(then));
+		should(returnedEvents).eql(then);
 	})
 });
