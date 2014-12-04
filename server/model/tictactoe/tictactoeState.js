@@ -9,17 +9,18 @@ module.exports = function(events){
 	var board = [["-","-","-"],["-","-","-"],["-","-","-"]];
 	var state = "OnGoing"
 	var turns = 0;
+	var verbose = false;
 
 	_.each(events, function(currEvent){
 		if(currEvent.event === "GameJoined")
 		{
-			console.log("Player: " + currEvent.user + " joined the game");
+			if(verbose){console.log("Player: " + currEvent.user + " joined the game");}
 			p2 = currEvent.user;
 			gameFull = true;
 		}
 		if(currEvent.event === "GameCreated")
 		{
-			console.log("Player: " + currEvent.user.userName + " created the game");
+			if(verbose){console.log("Player: " + currEvent.user.userName + " created the game");}
 			playerMove = currEvent.user;
 			p1 = currEvent.user;
 			gameExcists = true;
@@ -28,7 +29,7 @@ module.exports = function(events){
 		{
 			move(currEvent.coordinates);
 		}
-		console.log("Current playerMove: " + playerMove.userName);
+		if(verbose){console.log("Current playerMove: " + playerMove.userName);}
 	});
 
 	return {
@@ -63,22 +64,22 @@ module.exports = function(events){
 		
 		if(playerMove.userName === p1.userName)
 		{
-			console.log(playerMove.userName + " moved to: [" + coor[0] + "][" + coor[1] + "]")
+			if(verbose){console.log(playerMove.userName + " moved to: [" + coor[0] + "][" + coor[1] + "]");}
 			board[(coor[0])][(coor[1])] = 'X';
 		}
 		else if(playerMove.userName === p2.userName)
 		{
-			console.log(playerMove.userName + " moved to: [" + coor[0] + "][" + coor[1] + "]")
+			if(verbose){console.log(playerMove.userName + " moved to: [" + coor[0] + "][" + coor[1] + "]");}
 			board[(coor[0])][(coor[1])] = 'O';
 		}
-		drawBoard();
+		if(verbose){drawBoard();}
 
 		turns++;	
 
 		if(turns >= 9)
 		{
 			state="GameDraw";
-			console.log("Game Draw!!!");
+			if(verbose){console.log("Game Draw!!!");}
 		}
 
 		for(i = 0; i < 8; i++)
@@ -105,7 +106,7 @@ module.exports = function(events){
 			if(lines[i] === "OOO" || lines[i] === "XXX")
 			{
 					state = "GameWon";
-					console.log(playerMove.userName + ": WON THE GAME!!!");
+					if(verbose){console.log(playerMove.userName + ": WON THE GAME!!!");}
 					break;
 			}
 		}
@@ -137,6 +138,6 @@ module.exports = function(events){
 		{
 			playerMove = p1;
 		}
-		console.log("Switching PlayerMove");
+		if(verbose){console.log("Switching PlayerMove");}
 	}
 };
