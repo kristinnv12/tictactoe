@@ -13,13 +13,13 @@ module.exports = function(events){
 	_.each(events, function(currEvent){
 		if(currEvent.event === "GameJoined")
 		{
-			console.log("Player: " + JSON.stringify(currEvent.user) + " joined the game");
+			console.log("Player: " + currEvent.user + " joined the game");
 			p2 = currEvent.user;
 			gameFull = true;
 		}
 		if(currEvent.event === "GameCreated")
 		{
-			console.log("Player: " + JSON.stringify(currEvent.user) + " created the game");
+			console.log("Player: " + currEvent.user.userName + " created the game");
 			playerMove = currEvent.user;
 			p1 = currEvent.user;
 			gameExcists = true;
@@ -28,7 +28,7 @@ module.exports = function(events){
 		{
 			move(currEvent.coordinates);
 		}
-		console.log("current playerMove: " + JSON.stringify(playerMove));
+		console.log("Current playerMove: " + playerMove.userName);
 	});
 
 	return {
@@ -61,14 +61,14 @@ module.exports = function(events){
 		var lines = [];
 		var i;
 		
-		if(JSON.stringify(playerMove) === JSON.stringify(p1))
+		if(playerMove.userName === p1.userName)
 		{
-			console.log(JSON.stringify(playerMove) + " moved to: [" + coor[0] + "][" + coor[1] + "]")
+			console.log(playerMove.userName + " moved to: [" + coor[0] + "][" + coor[1] + "]")
 			board[(coor[0])][(coor[1])] = 'X';
 		}
-		else if(JSON.stringify(playerMove) === JSON.stringify(p2))
+		else if(playerMove.userName === p2.userName)
 		{
-			console.log(JSON.stringify(playerMove) + " moved to: [" + coor[0] + "][" + coor[1] + "]")
+			console.log(playerMove.userName + " moved to: [" + coor[0] + "][" + coor[1] + "]")
 			board[(coor[0])][(coor[1])] = 'O';
 		}
 		drawBoard();
@@ -78,6 +78,7 @@ module.exports = function(events){
 		if(turns >= 9)
 		{
 			state="GameDraw";
+			console.log("Game Draw!!!");
 		}
 
 		for(i = 0; i < 8; i++)
@@ -104,13 +105,13 @@ module.exports = function(events){
 			if(lines[i] === "OOO" || lines[i] === "XXX")
 			{
 					state = "GameWon";
-					console.log(JSON.stringify(playerMove) + ": WON THE GAME!!!");
+					console.log(playerMove.userName + ": WON THE GAME!!!");
 					break;
 			}
 		}
 		if(state === "OnGoing")
 		{
-			switchPlayers(JSON.stringify(playerMove));
+			switchPlayers(playerMove.userName);
 		}
 	}
 	function drawBoard(){
@@ -126,16 +127,16 @@ module.exports = function(events){
 		}
 	}
 
-	function switchPlayers(curruser){
+	function switchPlayers(currUsername){
 
-		if(curruser === JSON.stringify(p1))
+		if(currUsername === p1.userName)
 		{
 			playerMove = p2;
 		}
-		else if(curruser === JSON.stringify(p2))
+		else if(currUsername === p2.userName)
 		{
 			playerMove = p1;
 		}
-		console.log("SWITCHING PAYERMOVE");
+		console.log("Switching PlayerMove");
 	}
 };

@@ -52,7 +52,7 @@ module.exports = function(history){
 							timeStamp: command.timeStamp
 						}];	
 					}
-					if((JSON.stringify(gameState.playerMove())) === (JSON.stringify(command.user)))
+					if((gameState.playerMove().userName) === (command.user.userName))
 					{
 
 						if(gameState.free(command.coordinates))
@@ -64,8 +64,18 @@ module.exports = function(history){
 									event:"GameWon",
 									user: command.user,
 									name: command.name,
-									timeStamp: command.timeStamp,
+									timeStamp: command.timeStamp
 								}];
+							}
+							else if(gameState.state() === "GameDraw")
+							{
+								return[{
+									event:"GameDraw",
+									user: command.user,
+									name: command.name,
+									timeStamp: command.timeStamp
+								}];
+
 							}
 
 							return[{
