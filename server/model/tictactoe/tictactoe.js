@@ -54,9 +54,20 @@ module.exports = function(history){
 					}
 					if((JSON.stringify(gameState.playerMove())) === (JSON.stringify(command.user)))
 					{
+
 						if(gameState.free(command.coordinates))
 						{
 							gameState.makeMove(command.coordinates);
+							if(gameState.state() === "GameWon")
+							{
+								return[{
+									event:"GameWon",
+									user: command.user,
+									name: command.name,
+									timeStamp: command.timeStamp,
+								}];
+							}
+
 							return[{
 								event:"MoveMade",
 								user: command.user,
