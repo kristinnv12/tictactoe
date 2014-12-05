@@ -12,7 +12,7 @@ module.exports = function(history){
 						user: command.user,
 						name: command.name,
 						timeStamp: command.timeStamp
-					}];
+					}]
 				},
 				"JoinGame": function(command){
 					//console.log("----->" + gameState.gameFull());
