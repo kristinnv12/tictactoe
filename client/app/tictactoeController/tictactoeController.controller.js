@@ -18,8 +18,8 @@ angular.module('tictactoeApp')
 		);
 	
 		postPromise.then(function(data){
-			//$scope.processEvents(data.data.response);
-			console.log(JSON.stringify(data));
+			$scope.processEvents(data.data);
+			console.log(JSON.stringify($scope.processedEvents));
 		});
 	};
 });

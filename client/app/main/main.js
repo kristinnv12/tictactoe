@@ -6,6 +6,6 @@ angular.module('tictactoeApp')
       .state('main', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+        controller: 'TictactoeController'
       });
   });
