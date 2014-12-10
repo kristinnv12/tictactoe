@@ -6,13 +6,23 @@ module.exports = function(history){
 		executeCommand: function(command){
 			var commandHandlers = {
 				"CreateGame": function(command){
-
-					return[{
-						event:"GameCreated",
-						user: command.user,
-						name: command.name,
-						timeStamp: command.timeStamp
-					}]
+					if(!gameState.gameExcists()){
+						return[{
+							event:"GameCreated",
+							user: command.user,
+							name: command.name,
+							timeStamp: command.timeStamp
+						}];
+					}
+					else
+					{
+						return[{
+							event:"GameExcists",
+							user: command.user,
+							name: command.name,
+							timeStamp: command.timeStamp
+						}];
+					}
 				},
 				"JoinGame": function(command){
 					//console.log("----->" + gameState.gameFull());

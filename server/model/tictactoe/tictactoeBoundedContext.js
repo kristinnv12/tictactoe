@@ -7,7 +7,8 @@ module.exports = function(eventStore, commandHandler){
 			var eventStream = eventStore.loadEvents(cmd.id);
 			var events = commandHandler(eventStream).executeCommand(cmd);
 			eventStore.storeEvents(cmd.id, events);
-			return commandHandler(eventStream).executeCommand(cmd);
+			console.log(eventStore.loadEvents(cmd.id));
+			return events;
 		}
 	}
 }

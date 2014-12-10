@@ -17,13 +17,13 @@ exports.executeCommand = function(request, response)
 		}
 
 		var actionStore = app.eventStore;
-
 		var context = bContext(actionStore, handler);
 		var result = context.handleCommand(request.body);
+
 		response.json(result);
 	}
 	catch(e)
 	{
 		response.json(e);
 	}
-}
+};

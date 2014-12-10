@@ -27,6 +27,7 @@ describe('POST /api/createGame', function() {
 					return done(error);
 				}
 				response.body.should.be.instanceof(Array);
+				console.log(response.body);
 				done();
 			});
 	});
