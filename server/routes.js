@@ -10,6 +10,7 @@ module.exports = function(app) {
 
   // Insert routes below
   app.use('/api/createGame', require('./api/createGame')(app).router);
+  app.use('/api/joinGame', require('./api/joinGame')(app).router);
   app.use('/api/things', require('./api/thing'));
   
   // All undefined asset or api routes should return a 404

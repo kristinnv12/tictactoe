@@ -4,11 +4,11 @@ var should = require('should');
 var app = require('../../app');
 var request = require('supertest');
 
-describe('----------POST /api/createGame-----------', function() {
-	it('should respond with a GameCreated event in a Json array', function(done){
+describe('----------POST /api/joinGame--------------', function() {
+	it('should respond with a GameJoined event in a Json array', function(done){
 		var given = {
 			id: "1",
-			command: "CreateGame",
+			command: "JoinGame",
 			user: {
 				userName: "Kiddi"
 			},
@@ -19,7 +19,7 @@ describe('----------POST /api/createGame-----------', function() {
 		var myRequest = request(app);
 
 		myRequest
-			.post('/api/createGame')
+			.post('/api/JoinGame')
 			.type('json')
 			.send(given)
 			.end(function(error, response){
