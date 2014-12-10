@@ -11,6 +11,7 @@ describe('-------- Creating a game command --------', function(){
 		var givenObject = [];
 
 		var when = {
+			id: "7bc36500-5ac7-a3e2-f52b-0088373b3a9b",
 			command: "CreateGame",
 			user:{
 				userName:"Kiddi"
@@ -20,6 +21,7 @@ describe('-------- Creating a game command --------', function(){
 		};
 
 		var then = [{
+			id: "7bc36500-5ac7-a3e2-f52b-0088373b3a9b",
 			event:"GameCreated",
 			user:{
 				userName: "Kiddi"

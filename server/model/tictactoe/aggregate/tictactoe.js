@@ -7,6 +7,7 @@ module.exports = function(history){
 			var commandHandlers = {
 				"CreateGame": function(command){
 					return[{
+						id: command.id,
 						event:"GameCreated",
 						user: command.user,
 						name: command.name,
@@ -18,14 +19,15 @@ module.exports = function(history){
 					if(gameState.gameFull())
 					{
 						return[{
+							id: command.id,
 							event:"JoinFailGameFull",
 							user: command.user,
 							name: command.name,
 							timeStamp: command.timeStamp
 						}];						
 					}
-					gameState.gameFull = true;
 					return[{
+						id: command.id,
 						event:"GameJoined",
 						user: command.user,
 						name: command.name,
@@ -36,6 +38,7 @@ module.exports = function(history){
 					if(!gameState.gameExcists())
 					{
 						return[{
+							id: command.id,
 							event:"GameDoesntExcist",
 							user: command.user,
 							name: command.name,
@@ -45,6 +48,7 @@ module.exports = function(history){
 					if(!gameState.gameFull())
 					{
 						return[{
+							id: command.id,
 							event:"GameNotFull",
 							user: command.user,
 							name: command.name,
@@ -60,6 +64,7 @@ module.exports = function(history){
 							if(gameState.state() === "GameWon")
 							{
 								return[{
+									id: command.id,
 									event:"GameWon",
 									user: command.user,
 									name: command.name,
@@ -69,6 +74,7 @@ module.exports = function(history){
 							else if(gameState.state() === "GameDraw")
 							{
 								return[{
+									id: command.id,
 									event:"GameDraw",
 									user: command.user,
 									name: command.name,
@@ -78,6 +84,7 @@ module.exports = function(history){
 							}
 
 							return[{
+								id: command.id,
 								event:"MoveMade",
 								user: command.user,
 								name: command.name,
@@ -88,6 +95,7 @@ module.exports = function(history){
 						else
 						{
 							return[{
+								id: command.id,
 								event:"SquareOccupied",
 								user: command.user,
 								name: command.name,
@@ -99,6 +107,7 @@ module.exports = function(history){
 					else
 					{
 						return[{
+							id: command.id,
 							event:"NotYourMove",
 							user: command.user,
 							name: command.name,
