@@ -35,11 +35,11 @@ module.exports = function(history){
 					}];
 				},
 				"MakeMove": function(command){
-					if(!gameState.gameExcists())
+					if(!gameState.gameExists())
 					{
 						return[{
 							id: command.id,
-							event:"GameDoesntExcist",
+							event:"GameDoesntExist",
 							user: command.user,
 							name: command.name,
 							timeStamp: command.timeStamp

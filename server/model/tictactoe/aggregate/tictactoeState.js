@@ -2,7 +2,7 @@ var _ = require('lodash');
 module.exports = function(events){
 
 	var gameFull = false;
-	var gameExcists = false;
+	var gameExists = false;
 	var p1;
 	var p2;
 	var playerMove;
@@ -23,7 +23,7 @@ module.exports = function(events){
 			if(verbose){console.log("Player: " + currEvent.user.userName + " created the game");}
 			playerMove = currEvent.user;
 			p1 = currEvent.user;
-			gameExcists = true;
+			gameExists = true;
 		}
 		if(currEvent.event === "MoveMade")
 		{
@@ -37,8 +37,8 @@ module.exports = function(events){
 		gameFull: function(){
 			return gameFull;
 		},
-		gameExcists: function(){
-			return gameExcists;
+		gameExists: function(){
+			return gameExists;
 		},
 		playerMove: function(){
 			return playerMove;

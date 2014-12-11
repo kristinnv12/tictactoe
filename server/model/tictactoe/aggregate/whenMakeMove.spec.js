@@ -6,7 +6,7 @@ var tictactoe = require('./tictactoe');
 
 describe('-------- Making a move --------', function(){
 
-	it('should emit a GameDoesntExcist event', function(){
+	it('should emit a GameDoesntExist event', function(){
 		
 		var givenObject = [];
 
@@ -23,7 +23,7 @@ describe('-------- Making a move --------', function(){
 
 		var then = [{
 			id: "7bc36500-5ac7-a3e2-f52b-0088373b3a9b",
-			event:"GameDoesntExcist",
+			event:"GameDoesntExist",
 			user:{
 				userName: "Kiddi"
 			},
