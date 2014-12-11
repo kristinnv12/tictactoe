@@ -25,4 +25,18 @@ describe('GameState testing', function(){
 		expect(gameState.p1.username).toBe("Kiddi");
 		expect(gameState.gameName).toBe("TheBestGame");
 	});
+
+	it('should add username to state', function() {
+		gameState.alter([{
+			id: '1337',
+			event: 'GameCreated',
+			user:{
+				username: 'Ragnar'
+			},
+			name: 'TheBestGame',
+			timeStamp: '2014-12-02-T18:23:55'
+		}]);
+
+		expect(gameState.p1.username).toBe("Ragnar");
+	});
 });

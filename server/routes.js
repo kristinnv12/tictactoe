@@ -9,6 +9,7 @@ var errors = require('./components/errors');
 module.exports = function(app) {
 
   // Insert routes below
+  app.use('/api/history', require('./api/history'));
   app.use('/api/createGame', require('./api/createGame')(app).router);
   app.use('/api/joinGame', require('./api/joinGame')(app).router);
   app.use('/api/makeMove', require('./api/makeMove')(app).router);

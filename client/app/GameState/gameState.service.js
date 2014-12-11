@@ -17,6 +17,9 @@ angular.module('tictactoeApp')
 							state.gameName = event.name;
 							state.p1 = event.user;
 							state.id = event.id;
+						},
+						'GameJoined': function(event, state){
+							state.p2 = event.user;
 						}
 					};
 					 _.each(history, function (e) {
