@@ -68,7 +68,9 @@ module.exports = function(history){
 									event:"GameWon",
 									user: command.user,
 									name: command.name,
-									timeStamp: command.timeStamp
+									timeStamp: command.timeStamp,
+									coordinates: command.coordinates,
+									side: command.side
 								}];
 							}
 							else if(gameState.state() === "GameDraw")
@@ -78,7 +80,9 @@ module.exports = function(history){
 									event:"GameDraw",
 									user: command.user,
 									name: command.name,
-									timeStamp: command.timeStamp
+									timeStamp: command.timeStamp,
+									coordinates: command.coordinates,
+									side: command.side
 								}];
 
 							}
@@ -89,7 +93,8 @@ module.exports = function(history){
 								user: command.user,
 								name: command.name,
 								timeStamp: command.timeStamp,
-								coordinates: command.coordinates
+								coordinates: command.coordinates,
+								side: command.side
 							}];
 						}
 						else
@@ -101,7 +106,7 @@ module.exports = function(history){
 								name: command.name,
 								timeStamp: command.timeStamp,
 								coordinates: command.coordinates
-							}];
+							}]
 						}
 					}
 					else

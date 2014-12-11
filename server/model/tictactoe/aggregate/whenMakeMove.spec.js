@@ -203,7 +203,8 @@ describe('-------- Making a move --------', function(){
 			},
 			name:"MyGame",
 			timeStamp: "2014-12-02-T18:23:55",
-			coordinates: [0,0]
+			coordinates: [0,0],
+			side: 'X'
 		};
 
 		var then = [{
@@ -214,7 +215,8 @@ describe('-------- Making a move --------', function(){
 			},
 			name: "MyGame",
 			timeStamp: "2014-12-02-T18:23:55",
-			coordinates: [0,0]
+			coordinates: [0,0],
+			side: 'X'
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
@@ -270,7 +272,8 @@ describe('-------- Making a move --------', function(){
 			},
 			name:"MyGame",
 			timeStamp: "2014-12-02-T18:23:55",
-			coordinates: [0,2]
+			coordinates: [0,2],
+			side: 'X'
 		};
 
 		var then = [{
@@ -281,7 +284,8 @@ describe('-------- Making a move --------', function(){
 			},
 			name: "MyGame",
 			timeStamp: "2014-12-02-T18:23:55",
-			coordinates: [0,2]
+			coordinates: [0,2],
+			side: 'X'
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);

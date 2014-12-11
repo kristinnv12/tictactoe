@@ -10,6 +10,15 @@ angular.module('tictactoeApp')
 				gameName: 'n/a',
 				p1: 'n/a',
 				p2: 'n/a',
+				board: 
+				[
+					["", "", ""], 
+					["", "", ""], 
+					["", "", ""]
+				],
+				nextToMove: 'X',
+				winner: undefined,
+				draw: false,
 				alter: function(history){
 					var handlers = {
 						'GameCreated': function(event, state){
@@ -20,6 +29,25 @@ angular.module('tictactoeApp')
 						},
 						'GameJoined': function(event, state){
 							state.p2 = event.user;
+						},
+						'MoveMade': function(event, state){
+							if(event.side === 'X')
+							{
+								state.nextToMove = 'O';
+							}
+							else
+							{
+								state.nextToMove = 'X'
+							}
+							state.board[event.coordinates[0]][event.coordinates[1]] = event.side;
+						},'GameWon': function(event, state){
+							state.board[event.coordinates[0]][event.coordinates[1]] = event.side;
+							state.winner = event.user.userName;
+							state.nextToMove = 'Done';
+						},'GameDraw': function(event, state){
+							state.board[event.coordinates[0]][event.coordinates[1]] = event.side;
+							state.draw = true;
+							state.nextToMove = 'Done';
 						}
 					};
 					 _.each(history, function (e) {

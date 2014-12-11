@@ -27,7 +27,7 @@ describe('testing playGameController',function(){
 
 		init();
 
-		expect(scope.myself).toBe('Kiddi');
+		expect(scope.myself.userName).toBe('Kiddi');
 		expect(scope.joinLink).toBe('http://server:80/join/1337');
 		expect(scope.gameState.gameName).toBe('TheBestGame');
 	});

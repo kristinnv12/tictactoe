@@ -18,13 +18,13 @@ angular.module('tictactoeApp')
 		promise.then(function(){
 			if($location.search().playerRole == 'X')
 			{
-				$scope.myself = $scope.gameState.p1.userName;
-				$scope.opponent = $scope.gameState.p2.userName;
+				$scope.myself = $scope.gameState.p1;
+				$scope.opponent = $scope.gameState.p2;
 			}
 			else
 			{
-				$scope.opponent = $scope.gameState.p1.userName;
-				$scope.myself = $scope.gameState.p2.userName;
+				$scope.opponent = $scope.gameState.p1;
+				$scope.myself = $scope.gameState.p2;
 			}
 			var port = '';
 
@@ -37,10 +37,32 @@ angular.module('tictactoeApp')
 		})
 	};
 
+	$scope.move = function(coor)
+	{
+
+		if(!(currRole() === $scope.gameState.nextToMove))
+		{
+			console.log("wrong turn");
+			return;
+		}
+		handleEvents($http.post('/api/makeMove/', {
+			id: $scope.gameState.id,
+			command: "MakeMove",
+			user: $scope.myself,
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: coor,
+			side: currRole()
+		}));
+	};
+
+	function currRole(){
+		return $location.search()['playerRole'];
+	}
+
 
 	function update() {
 		handleEvents($http.get('/api/history/' + gameId));
 	}
 	update();
-	$interval(update, 5000);
+	$interval(update, 1000);
 });

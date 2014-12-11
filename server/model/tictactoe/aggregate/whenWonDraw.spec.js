@@ -75,7 +75,8 @@ describe('-------- Wining/Drawing a game --------', function(){
 			},
 			name:"MyGame",
 			timeStamp: "2014-12-02-T18:23:55",
-			coordinates: [2,0]
+			coordinates: [2,0],
+			side: 'X'
 		};
 
 		var then = [{
@@ -85,7 +86,9 @@ describe('-------- Wining/Drawing a game --------', function(){
 				userName: "Kiddi"
 			},
 			name: "MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [2,0],
+			side: 'X'
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
@@ -162,7 +165,8 @@ describe('-------- Wining/Drawing a game --------', function(){
 			},
 			name:"MyGame",
 			timeStamp: "2014-12-02-T18:23:55",
-			coordinates: [2,2]
+			coordinates: [2,2],
+			side: 'X'
 		};
 
 		var then = [{
@@ -172,7 +176,9 @@ describe('-------- Wining/Drawing a game --------', function(){
 				userName: "Kiddi"
 			},
 			name: "MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [2,2],
+			side: 'X'
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);
@@ -289,7 +295,8 @@ describe('-------- Wining/Drawing a game --------', function(){
 			},
 			name:"MyGame",
 			timeStamp: "2014-12-02-T18:23:55",
-			coordinates: [2,2]
+			coordinates: [2,2],
+			side: 'X'
 		};
 
 		var then = [{
@@ -299,7 +306,9 @@ describe('-------- Wining/Drawing a game --------', function(){
 				userName: "Kiddi"
 			},
 			name: "MyGame",
-			timeStamp: "2014-12-02-T18:23:55"
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [2,2],
+			side: 'X'
 		}];
 
 		var returnedEvents = tictactoe(givenObject).executeCommand(when);

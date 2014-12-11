@@ -3,6 +3,21 @@
 
 	<a target="_new" href="{{joinLink}}">Join link</a>
 
-	<div>You: {{myself}}</div>
-	<div>Your opponent: {{opponent}}</div> 
+	<div>You: {{myself.userName}} - {{myself.side}}</div>
+	<div>Your opponent: {{opponent.userName}} - {{opponent.side}}</div>
+
+
+	<div class="winner" ng-show="gameState.winner">
+		{{ gameState.winner }} WINS!
+	</div>
+
+	<div class="draw" ng-show="gameState.draw">
+		DRAW!
+	</div>
+	<div class="board">
+		<div class="trow" ng-repeat="row in gameState.board" ng-init="x=$index">
+			<div class="tcell" ng-class="cell + 'x' + x + 'y' + y" ng-repeat="cell in row track by $index" ng-init="y=$index" ng-click="move([x,y])">
+				<span class="content">{{cell}}</span>
+	</div>
+
 </div>
