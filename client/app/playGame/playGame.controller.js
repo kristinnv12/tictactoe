@@ -1,21 +1,19 @@
 'use strict';
 
 angular.module('tictactoeApp')
-	.controller('PlayGameController', function($scope, gameState, $location, $http){
+	.controller('PlayGameController', function($scope, gameState, $location, $http, $interval){
 
 	$scope.gameState = gameState();
-	console.log($scope.gameState);
 	var gameId = $location.search().gId;
 
 	var handleEvents = function(promise){
 
-		console.log('-----' + promise);
 
 		promise.then(function(res){
 			$scope.gameState.alter(res.data);
+			console.log(JSON.stringify(res.data));
 		});
 
-		console.log($scope.gameState);
 		
 		promise.then(function(){
 			if($location.search().playerRole == 'X')
@@ -38,5 +36,11 @@ angular.module('tictactoeApp')
 			$scope.joinLink = 'http://' + $location.host() + port + '/join/' + $location.search().gId;
 		})
 	};
-	handleEvents($http.get('/api/history/' + gameId));
+
+
+	function update() {
+		handleEvents($http.get('/api/history/' + gameId));
+	}
+	update();
+	$interval(update, 5000);
 });

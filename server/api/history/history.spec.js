@@ -14,8 +14,7 @@ it('should respond with JSON array', function(done) {
 	.end(function(error, response) {
 		if (error) return done(error);
 		response.body.should.be.instanceof(Array);
-		console.log(JSON.stringify(response.body));
 		done();
 	});
 });
-});
+});	

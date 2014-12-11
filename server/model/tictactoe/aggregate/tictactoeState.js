@@ -24,6 +24,7 @@ module.exports = function(events){
 			playerMove = currEvent.user;
 			p1 = currEvent.user;
 			gameExists = true;
+			gameFull = false;
 		}
 		if(currEvent.event === "MoveMade")
 		{
