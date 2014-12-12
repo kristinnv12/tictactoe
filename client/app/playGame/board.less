@@ -1,27 +1,51 @@
 .trow{
   display: inline-block;
 }
-
 .tcell{
   display: inline-block;
   width: 110px;
   height: 110px;
   margin: 6px;
-  background-color: rgba(48, 214, 251, 0.38);
+  background-color: #cccccc;
   text-align: center;
   vertical-align: middle;
-  border: 1px solid #245269;
+  border: 3px solid #333333;
+  border-radius: 15px; 
 }
-
+.tcell:hover{
+  background-color: #bbbbbb;
+}
+.players{
+  overflow:auto;
+}
+.players p{
+  float:left;
+  margin-right: 20px;
+}
+p{
+  font-size: 130%;
+}
+.inner{
+  position: absolute; 
+  bottom: 0;
+  margin-bottom: 5px;
+}
 div.board{
-  border: 1px solid #245269;
+  position: relative;
+  border: 3px solid #333333;
+  border-radius: 15px; 
   padding: 5px 5px 5px 5px;
   margin: 10px;
-  width: 380px;
-  height: 380px;
+  width: 385px;
+  height: 430px;
   cursor: pointer;
-  background-color: grey;
+  background-color: #aaaaaa;
 }
+.head{
+  font-size:180%;
+  text-align: center
+}
+
 .content{
 color:black;
 font-size: 550%;

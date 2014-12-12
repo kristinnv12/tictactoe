@@ -1,23 +1,43 @@
 <div class="container">
-	<h1>Play - {{gameState.gameName || 'NoName'}}</h1>
+	<h1>{{gameState.gameName || 'NoName'}}</h1>
 
-	<a target="_new" href="{{joinLink}}">Join link</a>
-
-	<div>You: {{myself.userName}} - {{myself.side}}</div>
-	<div>Your opponent: {{opponent.userName}} - {{opponent.side}}</div>
-
-
-	<div class="winner" ng-show="gameState.winner">
-		{{ gameState.winner }} WINS!
+	<div class="link" ng-hide="gameState.p2">
+		<a target="_new" href="{{joinLink}}">Join link</a>
 	</div>
 
-	<div class="draw" ng-show="gameState.draw">
-		DRAW!
+	<div class="players">
+		<p>{{myself.side}}: {{myself.userName}}</p>
+		<p>VS</p>
+		<div ng-show="gameState.p2">
+			<p>{{opponent.side}}: {{opponent.userName}}</p>
+		</div>
 	</div>
-	<div class="board">
-		<div class="trow" ng-repeat="row in gameState.board" ng-init="x=$index">
-			<div class="tcell" ng-class="cell + 'x' + x + 'y' + y" ng-repeat="cell in row track by $index" ng-init="y=$index" ng-click="move([x,y])">
-				<span class="content">{{cell}}</span>
-	</div>
+		<div class="board">
+		<div class="head">
+			<div ng-show="gameState.nextToMove == 'X' && gameState.p2">
+				<p>{{gameState.p1.userName}}'s turn</p>
+			</div>
 
+			<div ng-show="!(gameState.p2)">
+				<p>Waiting for player ...</p>
+			</div>
+
+			<div ng-show="gameState.nextToMove == 'O'">
+				<p>{{gameState.p2.userName}}'s turn</p>
+			</div>
+
+			<div class="winner" ng-show="gameState.winner">
+				<p>{{ gameState.winner }} WINS!</p>
+			</div>
+
+			<div class="draw" ng-show="gameState.draw">
+				<p>DRAW!</p>
+			</div>
+		</div>
+		<div class="inner">
+			<div class="trow" ng-repeat="row in gameState.board" ng-init="x=$index">
+				<div class="tcell" ng-class="cell + 'x' + x + 'y' + y" ng-repeat="cell in row track by $index" ng-init="y=$index" ng-click="move([x,y])">
+					<span class="content">{{cell}}</span>
+			</div>
+	</div>
 </div>

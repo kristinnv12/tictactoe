@@ -8,8 +8,8 @@ angular.module('tictactoeApp')
 				exists: false,
 				id: 'n/a',
 				gameName: 'n/a',
-				p1: 'n/a',
-				p2: 'n/a',
+				p1: undefined,
+				p2: undefined,
 				board: 
 				[
 					["", "", ""], 
