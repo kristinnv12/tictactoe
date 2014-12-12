@@ -32,6 +32,46 @@ describe('testing playGameController',function(){
 		expect(scope.gameState.gameName).toBe('TheBestGame');
 	});
 
+	it('should assign right user to playerRole O', function(){
+
+		location.search('playerRole', 'O'),
+
+		init();
+
+		expect(scope.myself.userName).toBe('Ragnar');
+	});
+
+	it('should switch nextToMove when move is made', function(){
+
+		init();
+		httpBackend.expectPOST('/api/makeMove/', {
+			id: "1337",
+			command: "MakeMove",
+			user: {
+			userName: "Kiddi"
+			},
+			timeStamp: '2014-12-02-T18:23:55',
+			coordinates: [1, 1],
+			side: 'X'
+		}).respond([{
+			event: "MoveMade",
+			user: {
+			userName: "Kiddi"
+			},
+			timeStamp: '2014-12-02-T18:23:55',
+			coordinates: [1, 1],
+			side: 'X'
+		}]);
+	location.search('playerRole', 'X');
+
+	scope.move([1, 1]);
+	httpBackend.flush();
+
+	expect(scope.myMove()).toBe(false);
+
+
+	});
+
 	function init(){
 		 httpBackend.expectGET('/api/history/1337').respond([{
 			event: "GameCreated",
@@ -48,8 +88,7 @@ describe('testing playGameController',function(){
 			user: {
 				userName: "Ragnar"
 			}
-			}
-		]);
+		}]);
 		httpBackend.flush();
 	}
 });

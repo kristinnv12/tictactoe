@@ -40,7 +40,7 @@ angular.module('tictactoeApp')
 	$scope.move = function(coor)
 	{
 
-		if(!(currRole() === $scope.gameState.nextToMove))
+		if(!($scope.myMove))
 		{
 			console.log("wrong turn");
 			return;
@@ -54,7 +54,10 @@ angular.module('tictactoeApp')
 			side: currRole()
 		}));
 	};
-
+	$scope.myMove = function()
+	{
+		return currRole() === $scope.gameState.nextToMove;
+	}
 	function currRole(){
 		return $location.search()['playerRole'];
 	}

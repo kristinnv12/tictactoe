@@ -38,5 +38,68 @@ describe('GameState testing', function(){
 		}]);
 
 		expect(gameState.p1.username).toBe("Ragnar");
+		expect(gameState.nextToMove).toBe('X');
 	});
+
+	it('Should add player to state when gameJoined', function () {
+		gameState.alter([{
+			event: "GameJoined",
+			user: {
+				userName: "Kiddi"
+			},
+			name: "TheBestGame",
+			timeStamp: "2014-12-02-T18:23:55"
+		}]);
+
+		expect(gameState.p2.userName).toBe("Kiddi");
+	});
+
+	it('Should add moves to state when MakeMove', function () {
+		gameState.alter([{
+			event: "MoveMade",
+			user: {
+				userName: "Kiddi"
+			},
+			name: "TheBestGame",
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0],
+			side: 'X'
+		}]);
+
+		expect(gameState.board[0][0]).toBe("X");
+		expect(gameState.nextToMove).toBe('O');
+	});
+
+	it('Should win a game when GameWon', function () {
+		gameState.alter([{
+			event: "GameWon",
+			user: {
+				userName: "Kiddi"
+			},
+			name: "TheBestGame",
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0],
+			side: 'X'
+		}]);
+
+ 		expect(gameState.nextToMove).toBe('Done');
+		expect(gameState.winner).toBe("Kiddi");
+	});
+
+	it('Should draw a game when GameDraw', function () {
+		gameState.alter([{
+			event: "GameDraw",
+			user: {
+				userName: "Kiddi"
+			},
+			name: "TheBestGame",
+			timeStamp: "2014-12-02-T18:23:55",
+			coordinates: [0,0],
+			side: 'X'
+		}]);
+
+ 		expect(gameState.nextToMove).toBe('Done');
+		expect(gameState.draw).toBe(true);
+	});
+
 });
