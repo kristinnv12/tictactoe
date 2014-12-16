@@ -87,7 +87,7 @@ describe('e2e testing: winGame', function(){
 									});
 									}).then(function () {
 
-										expect(playPage.myname.getText()).toBe("X: Kiddi");
+										expect(playPage.myname.getText()).toBe("X: Kiddi2");
 										expect(playPage.opponentname.getText()).toBe("O: Ragnar2");
 										makeMove(playPage.x0y1, 'X');
 
