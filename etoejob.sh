@@ -7,3 +7,5 @@ export DISPLAY=:99
 
 echo e2e
 grunt test:e2e --port=7000
+
+echo "Done"
