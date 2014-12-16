@@ -22,7 +22,7 @@
 		    
 		    <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
-			      <button id="createGame" ng-click="createGame()" ng-hide="myForm.gname.$error.maxlength || myForm.uname.$error.maxlength || myForm.gname.$error.required || myForm.uname.$error.required">Create Game</button>
+			      <button id="createGame" ng-click="createGame()" ng-disabled="myForm.$invalid">Create Game</button>
 			    </div>
 		    </div>
 		</form>

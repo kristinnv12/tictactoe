@@ -15,7 +15,7 @@
 
 		    <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
-		      		<button id="joinGame" ng-click="joinGame()" ng-hide="myForm.name.$error.maxlength || myForm.name.$error.required">Join Game</button>
+		      		<button id="joinGame" ng-click="joinGame()" ng-disabled="myForm.$invalid">Join Game</button>
 		      	</div>
 		    </div>
 		</div>
