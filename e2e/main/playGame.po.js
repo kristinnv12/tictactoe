@@ -11,6 +11,7 @@ var PlayGamePage = function() {
 	this.winner = this.container.element(by.css('.winner'));
 	this.opponentname = this.container.element(by.css('#opponentname'));
 	this.myname = this.container.element(by.css('#myname'));
+	this.draw = this.container.element(by.css('.draw'));
 
 	this.x0y0 = element(by.css('.x0y0'));
 	this.x0y1 = element(by.css('.x0y1'));
