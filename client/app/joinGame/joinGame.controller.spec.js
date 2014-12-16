@@ -36,6 +36,7 @@ describe("testing joinGameController", function(){
 			userName: "Kiddi",
 			side: "O"
 			},
+			name: 'theBestGame',
 			timeStamp: '2014-12-02-T18:23:55'
 	    })
 	    .respond([
@@ -43,6 +44,7 @@ describe("testing joinGameController", function(){
 	    ]);
 
 		scope.userName = "Kiddi";
+		scope.gameState.p1 = "Ragnar";
 	    scope.joinGame();
 
 

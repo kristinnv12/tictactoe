@@ -40,6 +40,7 @@ exports.config = {
   // Mocha has limited beta support. You will need to include your own
   // assertion framework if working with mocha.
   framework: 'jasmine',
+  chromeDriver: 'node_modules/grunt-protractor-runner/node_modules/protractor/selenium/chromedriver',
 
   // ----- Options to be passed to minijasminenode -----
   //

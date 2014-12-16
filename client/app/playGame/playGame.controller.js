@@ -50,6 +50,7 @@ angular.module('tictactoeApp')
 			command: "MakeMove",
 			user: $scope.myself,
 			timeStamp: "2014-12-02-T18:23:55",
+			name: $scope.gameState.gameName,
 			coordinates: coor,
 			side: currRole()
 		}));
@@ -67,5 +68,5 @@ angular.module('tictactoeApp')
 		handleEvents($http.get('/api/history/' + gameId));
 	}
 	update();
-	$interval(update, 1000);
+	$interval(update, 2000);
 });

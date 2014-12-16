@@ -51,6 +51,7 @@ describe('testing playGameController',function(){
 			userName: "Kiddi"
 			},
 			timeStamp: '2014-12-02-T18:23:55',
+			name: 'TheBestGame',
 			coordinates: [1, 1],
 			side: 'X'
 		}).respond([{
@@ -58,6 +59,7 @@ describe('testing playGameController',function(){
 			user: {
 			userName: "Kiddi"
 			},
+			name: 'TheBestGame',
 			timeStamp: '2014-12-02-T18:23:55',
 			coordinates: [1, 1],
 			side: 'X'

@@ -2,7 +2,7 @@
 
 angular.module('tictactoeApp')
 	.controller('JoinGameController', function($scope, $http, $location, $state, gameState){
-		
+		$scope.sameName = false;
 		
 		var handleEvents = function(promise){
 
@@ -19,6 +19,13 @@ angular.module('tictactoeApp')
 		handleEvents($http.get('/api/history/' + $state.params.gameId));
 
 		$scope.joinGame = function(){
+			console.log($scope.sameName);
+			if($scope.gameState.p1.userName === $scope.userName)
+			{
+				$scope.sameName = true;
+				return;
+			}
+			$scope.sameName = false;
 			var postPromise = $http.post('/api/joinGame/',{
 				'id': $scope.gameState.id,
 				'command': 'JoinGame',
@@ -26,6 +33,7 @@ angular.module('tictactoeApp')
 					'userName': $scope.userName,
 					'side': 'O'
 				},
+				'name' : $scope.gameState.gameName,
 				'timeStamp': '2014-12-02-T18:23:55'
 			});
 			handleEvents(postPromise);
