@@ -7,7 +7,7 @@ module.exports = function(events){
 	var p2;
 	var playerMove;
 	var board = [["-","-","-"],["-","-","-"],["-","-","-"]];
-	var state = "OnGoing"
+	var state;
 	var turns = 0;
 	var verbose = false;
 
@@ -29,6 +29,14 @@ module.exports = function(events){
 		if(currEvent.event === "MoveMade")
 		{
 			move(currEvent.coordinates);
+		}
+		if(currEvent.event === "GameWon")
+		{
+			state = "GameWon";
+		}
+		if(currEvent.event === "GameDraw")
+		{
+			state = "GameDraw";
 		}
 		if(verbose){console.log("Current playerMove: " + playerMove.userName);}
 	});
@@ -111,7 +119,7 @@ module.exports = function(events){
 					break;
 			}
 		}
-		if(state === "OnGoing")
+		if(state != "GameWon" || state != "GameDraw")
 		{
 			switchPlayers(playerMove.userName);
 		}

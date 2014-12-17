@@ -40,7 +40,7 @@ angular.module('tictactoeApp')
 	$scope.move = function(coor)
 	{
 
-		if(!($scope.myMove))
+		if(!($scope.myMove()))
 		{
 			console.log("wrong turn");
 			return;

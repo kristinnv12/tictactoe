@@ -113,10 +113,33 @@ describe('e2e testing: winGame', function(){
 														expect(playPage.opponentname.getText()).toBe("O: Ragnar2");
 														makeMove(playPage.x0y2, 'X');
 
-														browser.sleep(500);
+														browser.sleep(2000);
 														expect(playPage.winner).toBeDefined();
 														expect(playPage.winner.getText()).toBe("Kiddi2 WINS!");
-														done();
+														makeMove(playPage.x2y2, '');
+
+														browser.switchTo().window(joinerHandle).then(function () {
+															browser.driver.wait(function () {
+															return browser.driver.isElementPresent(by.css('#myBoard')).then(function (el) {
+															return el === true;
+															});
+															}).then(function () {
+
+																expect(playPage.myname.getText()).toBe("O: Ragnar2");
+																expect(playPage.opponentname.getText()).toBe("X: Kiddi2");
+																makeMove(playPage.x2y2, '');
+
+																browser.switchTo().window(creatorHandle).then(function () {
+																	browser.driver.wait(function () {
+																	return browser.driver.isElementPresent(by.css('#myBoard')).then(function (el) {
+																	return el === true;
+																	});
+																	}).then(function () {
+																		done();
+																	});
+																});
+															});
+														});
 													});
 												});
 											});

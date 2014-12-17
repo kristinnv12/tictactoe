@@ -60,7 +60,9 @@ module.exports = function(history){
 
 						if(gameState.free(command.coordinates))
 						{
+							console.log("--------------------------------->",gameState.state());
 							gameState.makeMove(command.coordinates);
+							console.log("--------------------------------->",gameState.state());
 							if(gameState.state() === "GameWon")
 							{
 								return[{
