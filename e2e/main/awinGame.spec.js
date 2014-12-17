@@ -111,10 +111,9 @@ describe('e2e testing: winGame', function(){
 
 														expect(playPage.myname.getText()).toBe("X: Kiddi2");
 														expect(playPage.opponentname.getText()).toBe("O: Ragnar2");
-
 														makeMove(playPage.x0y2, 'X');
 
-														browser.sleep(200);
+														browser.sleep(500);
 														expect(playPage.winner).toBeDefined();
 														expect(playPage.winner.getText()).toBe("Kiddi2 WINS!");
 														makeMove(playPage.x2y2, '');

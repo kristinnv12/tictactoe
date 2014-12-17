@@ -144,7 +144,6 @@ describe('e2e testing: drawGame', function(){
 
 																				expect(playPage.myname.getText()).toBe("O: Ragnar");
 																				expect(playPage.opponentname.getText()).toBe("X: Kiddi");
-																				
 																				makeMove(playPage.x0y2, 'O');
 
 																				browser.switchTo().window(creatorHandle).then(function () {
@@ -156,7 +155,6 @@ describe('e2e testing: drawGame', function(){
 
 																						expect(playPage.myname.getText()).toBe("X: Kiddi");
 																						expect(playPage.opponentname.getText()).toBe("O: Ragnar");
-																						makeMove(playPage.x2y1, 'O');
 																						makeMove(playPage.x1y2, 'X');
 
 

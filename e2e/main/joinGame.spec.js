@@ -60,7 +60,7 @@ describe('e2e testing: create Game', function(){
 		});
 	});
 
-	it('should disable button, when no name same a other user', function(done){
+	it('should show error, when name same as other user', function(done){
 		
 		createPage.gameName.sendKeys("MyGame");
 		createPage.userName.sendKeys("Kiddi");
