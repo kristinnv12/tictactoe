@@ -1,0 +1,17 @@
+Ég breytti array-indexum á PlaceMove handlerinn í tictactoeState.js og hélt ég
+væri búinn að brjóta því unit testin gáfu grænt, en e2e testin gripu það.
+
+Prófaði að harðkóða nafnið á winner og veðjaði á að það bryti en neibb..
+
+Kommentaði út í tictactoe.js:
+  return[{
+    id: command.id,
+    event:"NotYourMove",
+    user: command.user,
+    name: command.name,
+    timeStamp: command.timeStamp
+  }];
+  e2e testin keyra en ekki unit testin
+
+Annars voru allar aðrar breytingar sem ég gerði gripnar af testum.
+Tók reyndar eftir því að timestamp er harðkóðaður á mörgum stöðum.
